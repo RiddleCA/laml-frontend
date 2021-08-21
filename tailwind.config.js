@@ -12,4 +12,11 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  theme: {
+    extend: {
+      backgroundImage: (theme) => ({
+        aurora: "url('./assets/aurora.jpg')",
+      }),
+    },
+  },
 };

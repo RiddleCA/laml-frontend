@@ -1,12 +1,34 @@
 import React from 'react';
-import './App.css';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Nav from './Components/Nav';
+import Home from './Components/Home';
+import Event from './Components/Event';
+import Submit from './Components/Submit';
+
+
 
 function App() {
   return (
-    <div className="text-red-500">
-      <h1>Hello world</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia aut ea, magni illum at fugiat ratione, quisquam officia quasi excepturi similique unde aliquid sed voluptate corporis odit. Commodi, labore officia.</p>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/event">
+          <Nav />
+          <Event />
+        </Route>
+        <Route>
+          <Nav />
+          <Submit />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
