@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .card {
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(15px);
 }
