@@ -11,11 +11,16 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwindcss-filters"), require("tailwind-glassmorphism")],
   theme: {
+    backdropFilter: {
+      none: "none",
+      blur: "blur(20px)",
+    },
     extend: {
       backgroundImage: (theme) => ({
         aurora: "url('./assets/aurora.jpg')",
+        aurora2: "url('./assets/aurora.webp')",
       }),
     },
   },
