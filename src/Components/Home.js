@@ -3,7 +3,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="bg-gray-300 w-5/6 md:w-2/5 h-5/6 m-auto rounded-lg mt-16 md:mt-28 card">
+    <div className="bg-gray-300 bg-opacity-60  w-5/6 md:w-2/5 h-5/6 m-auto rounded-lg mt-16 md:mt-28 card">
       <div className="m-auto w-full p-8">
         <img className="w-20 m-auto" src="./assets/slug-icon.png" alt="" />
         <label className="m-auto text-purple-700 text-3xl" htmlFor="eventReg">Event</label><br />
