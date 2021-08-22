@@ -53,7 +53,9 @@ function App() {
       setUsernameCookie(username);
       console.log(eventCookie);
       console.log(usernameCookie);
-      console.log(eventDetails);     
+      console.log(eventDetails);  
+      const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
+      setPlayers(playerList);   
       window.location.href = "/event"
       
     }
@@ -63,20 +65,20 @@ function App() {
   useEffect(()=>{
     setEventCookie(getCookie('event'));
     setUsernameCookie(getCookie('username'));
-    setPlayers([
-      {
-        user: "test",
-        score:6
-      },
-      {
-        user: "callum",
-        score:8
-      },
-      {
-        user: "Breana",
-        score:2
-      }
-    ])
+    // setPlayers([
+    //   {
+    //     user: "test",
+    //     score:6
+    //   },
+    //   {
+    //     user: "callum",
+    //     score:8
+    //   },
+    //   {
+    //     user: "Breana",
+    //     score:2
+    //   }
+    // ])
   },[]);
   
   
