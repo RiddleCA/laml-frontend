@@ -57,7 +57,7 @@ function App() {
       const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
       console.log(playerList);
       setPlayers(playerList);   
-      window.location.href = "/event"
+      //window.location.href = "/event"
       
     }
   }
