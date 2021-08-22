@@ -51,6 +51,8 @@ function App() {
       setEventInfo(eventDetails);
       setEventCookie(event);
       setUsernameCookie(username);
+      console.log(eventCookie);
+      console.log(usernameCookie);
       console.log(eventDetails);     
       window.location.href = "localhost:3000/event"
       
