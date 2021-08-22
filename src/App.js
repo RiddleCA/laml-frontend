@@ -64,7 +64,7 @@ function App() {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
   async function updatePlayers(){
-    const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players/`).then(res => res.data);      
+    const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${eventCookie}/players/`).then(res => res.data);      
     setPlayers(playerList);
   }
   
