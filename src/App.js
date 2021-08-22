@@ -9,6 +9,7 @@ import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Event from './Components/Event';
 import Submit from './Components/Submit';
+import axios from 'axios';
 
 
 
@@ -18,6 +19,7 @@ function App() {
   const [eventCookie, setEventCookie] = useState("")
   const [usernameCookie, setUsernameCookie] = useState("")
   const [players, setPlayers] = useState([]);
+  const [eventInfo, setEventInfo] = useState([]);
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -40,12 +42,18 @@ function App() {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
 
-  function onClick(event, username){
+  async function onClick(event, username){
+
+    
     console.log(event + " " + username);
     setCookie("event", event, 1);
     setCookie("username", username, 1);
     setEventCookie(event);
     setUsernameCookie(username);
+    console.log(`https://leaderboard.koldfusion.xyz/api/event/${event}`)
+    const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.JSON())
+    const eventData = eventDetails.JSON();
+    console.log(eventData);
   }
 
   useEffect(()=>{
@@ -70,10 +78,6 @@ function App() {
   
   
   players.sort((x,y) => {return y.score - x.score});
-  console.log(eventCookie);  
-  console.log(usernameCookie);
-  console.log(players);
-  
   return ( 
     <Router>
       <Nav />
