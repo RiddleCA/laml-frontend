@@ -58,6 +58,7 @@ function App() {
       console.log(playerList);
       setPlayers(playerList);   
       console.log(typeof playerList);
+      console.log(typeof [1,2,3])
       //window.location.href = "/event"
       
     }
