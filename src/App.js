@@ -58,9 +58,7 @@ function App() {
       console.log(playerList);
       setPlayers(playerList);   
       console.log(playerList.length);
-      //window.location.href = "/event"
-      
-      
+      window.location.href = "/event"   
     }
   }
     
