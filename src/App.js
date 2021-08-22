@@ -82,7 +82,7 @@ function App() {
     }
   }
   async function createPlayer(event, username){
-     await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}`)
+     await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/`)
   }
   
   players.sort((x,y) => {return y.score - x.score});
