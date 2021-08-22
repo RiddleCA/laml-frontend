@@ -7,8 +7,8 @@ const Home = ({onClick}) => {
   const [username, setUsername] = useState("");
   let history = useHistory();
 
-  function onSubmit(){
-    onClick(event, username);
+  async function onSubmit(){
+    await onClick(event, username);
     history.push("/event");
   }
 
