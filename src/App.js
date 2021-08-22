@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory
+  useHistory,
+  Redirect
 } from "react-router-dom";
 import Nav from './Components/Nav';
 import Home from './Components/Home';
@@ -60,7 +61,7 @@ function App() {
       console.log(playerList);
       setPlayers(playerList);   
       console.log(playerList.length);
-      history.push('/event');
+      return <Redirect to="/event" />
        
     }
   }
