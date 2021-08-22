@@ -39,8 +39,8 @@ function App() {
       }
     }
     checkCookies(ec);
-    
   },[]);
+
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -56,15 +56,24 @@ function App() {
     }
     return "";
   }
+
   function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
+  async function updatePlayers(){
+    const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players/`).then(res => res.data);      
+    setPlayers(playerList);
+  }
   
   async function onClick(event, username){
     if(event !== "" && username !== ""){
+      if(event.include(" ") || username.includes(" ")){
+        alert("Error! username or event cannot contain a space");
+        return
+      }
       const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/`).then(res => res.data);
       if(eventDetails !== {}){
         setCookie("event", event, 1);
@@ -78,6 +87,8 @@ function App() {
         setPlayers(playerList);   
         createPlayer(event, username);
       }
+    }else{
+      alert("Error! event or username cannot be blank");
     }
   }
   async function createPlayer(event, username){
@@ -85,7 +96,8 @@ function App() {
   }
 
   async function submitScore(event, username, score){
-    await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/item/${score}/`)
+    await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/item/?amount=${score}/`)
+    updatePlayers();
   }
   
   players.sort((x,y) => {return y.score - x.score});

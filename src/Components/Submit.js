@@ -20,6 +20,7 @@ const Submit = ({playerCount, submitScore, event, username}) => {
         return;
       }
       submitScore(event, username, count); 
+      history.push("/event");
       return;
     }
     alert("error, need to sign in again");

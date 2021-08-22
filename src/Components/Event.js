@@ -14,7 +14,7 @@ const Event = ({players, eventInfo}) => {
   ):(
     <div className="bg-gray-300 bg-opacity-40 border-white border border-opacity-40 w-5/6 md:w-2/5 h-5/6 m-auto rounded-lg mt-16 md:mt-28 card">
       <div className="m-auto w-full p-8">
-        <h2 className="text-purple-200">{eventInfo.title}</h2>
+        <h2 className="text-purple-200 text-lg">{eventInfo.title}</h2>
         <h3 className="text-purple-200">{eventInfo.description}</h3>
         {players.map((player) => <Player player={player}/>)}
       </div>
