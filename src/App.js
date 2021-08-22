@@ -30,9 +30,6 @@ function App() {
 
     async function checkCookies(event){
       if(event !== ""){
-        if(players.length > 0){
-          window.location.href = "/event";
-        }
         const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.data);
         const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
         setPlayers(playerList); 
