@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory,
+  
   Redirect
 } from "react-router-dom";
 import Nav from './Components/Nav';
@@ -22,7 +22,26 @@ function App() {
   const [usernameCookie, setUsernameCookie] = useState("")
   const [players, setPlayers] = useState([]);
   const [eventInfo, setEventInfo] = useState([]);
-  let history = useHistory();
+  
+
+  useEffect(()=>{
+    setEventCookie(getCookie('event'));
+    setUsernameCookie(getCookie('username'));
+    // setPlayers([
+    //   {
+    //     user: "test",
+    //     score:6
+    //   },
+    //   {
+    //     user: "callum",
+    //     score:8
+    //   },
+    //   {
+    //     user: "Breana",
+    //     score:2
+    //   }
+    // ])
+  },[]);
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -67,24 +86,7 @@ function App() {
   }
     
 
-  useEffect(()=>{
-    setEventCookie(getCookie('event'));
-    setUsernameCookie(getCookie('username'));
-    // setPlayers([
-    //   {
-    //     user: "test",
-    //     score:6
-    //   },
-    //   {
-    //     user: "callum",
-    //     score:8
-    //   },
-    //   {
-    //     user: "Breana",
-    //     score:2
-    //   }
-    // ])
-  },[]);
+  
   
   
   
