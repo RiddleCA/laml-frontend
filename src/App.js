@@ -72,16 +72,17 @@ function App() {
         setEventInfo(eventDetails);
         setEventCookie(event);
         setUsernameCookie(username);
-        
+        console.log(eventCookie);
+        console.log(usernameCookie);
         const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players/`).then(res => res.data);
         
         setPlayers(playerList);   
-        await createPlayer(username);
+        createPlayer(event, username);
       }
     }
   }
-  function createPlayer(event, username){
-      axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/{username}`)
+  async function createPlayer(event, username){
+     await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}`)
   }
   
   players.sort((x,y) => {return y.score - x.score});
