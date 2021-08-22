@@ -44,7 +44,9 @@ function App() {
     let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
-
+  if(players.length > 0){
+    return <Redirect to="/event" />
+  }
   async function onClick(event, username){
     
     const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.data);
@@ -61,8 +63,6 @@ function App() {
       console.log(playerList);
       setPlayers(playerList);   
       console.log(playerList.length);
-      return <Redirect to="/event" />
-       
     }
   }
     
