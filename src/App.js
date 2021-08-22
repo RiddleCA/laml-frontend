@@ -54,8 +54,8 @@ function App() {
     console.log(usernameCookie);
     console.log(`https://leaderboard.koldfusion.xyz/api/event/${event}`)
     const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`)
-    const eventData = eventDetails.json();
-    console.log(eventData);
+    
+    console.log(eventDetails);
   }
 
   useEffect(()=>{
