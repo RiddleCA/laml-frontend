@@ -85,7 +85,7 @@ function App() {
   }
 
   async function submitScore(event, username, score){
-    await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/${score}/`)
+    await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/item/${score}/`)
   }
   
   players.sort((x,y) => {return y.score - x.score});
