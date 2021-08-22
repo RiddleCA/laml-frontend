@@ -64,28 +64,25 @@ function App() {
   }
   
   async function onClick(event, username){
-    
-    const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.data);
-    if(eventDetails !== {}){
-      setCookie("event", event, 1);
-      setCookie("username", username, 1); 
-      setEventInfo(eventDetails);
-      setEventCookie(event);
-      setUsernameCookie(username);
-      console.log(eventCookie);
-      console.log(usernameCookie);
-      console.log(eventDetails);  
-      const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
-      console.log(playerList);
-      setPlayers(playerList);   
-      console.log(playerList.length);
+    if(event !== "" && username !== ""){
+      const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/`).then(res => res.data);
+      if(eventDetails !== {}){
+        setCookie("event", event, 1);
+        setCookie("username", username, 1); 
+        setEventInfo(eventDetails);
+        setEventCookie(event);
+        setUsernameCookie(username);
+        
+        const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players/`).then(res => res.data);
+        
+        setPlayers(playerList);   
+        await createPlayer(username);
+      }
     }
   }
-    
-
-  
-  
-  
+  function createPlayer(event, username){
+      axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/{username}`)
+  }
   
   players.sort((x,y) => {return y.score - x.score});
   return ( 
