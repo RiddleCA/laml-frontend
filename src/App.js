@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useHistory
 } from "react-router-dom";
 import Nav from './Components/Nav';
 import Home from './Components/Home';
@@ -20,6 +21,7 @@ function App() {
   const [usernameCookie, setUsernameCookie] = useState("")
   const [players, setPlayers] = useState([]);
   const [eventInfo, setEventInfo] = useState([]);
+  const history = useHistory();
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -58,7 +60,8 @@ function App() {
       console.log(playerList);
       setPlayers(playerList);   
       console.log(playerList.length);
-      window.location.href = "/event"   
+      history.push('/event')
+       
     }
   }
     
