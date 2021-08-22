@@ -2,7 +2,7 @@ import React from "react";
 import Player from './Player.js';
 import {Link} from "react-router-dom";
 
-const Event = ({players}) => {
+const Event = ({players, eventInfo}) => {
   console.log(players.length);
   return players.length === 0 ? (
     <div className="bg-gray-300 bg-opacity-40 border-white border border-opacity-40 w-5/6 md:w-2/5 h-5/6 m-auto rounded-lg mt-16 md:mt-28 card">

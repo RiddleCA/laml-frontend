@@ -19,7 +19,7 @@ function App() {
   const [eventCookie, setEventCookie] = useState("")
   const [usernameCookie, setUsernameCookie] = useState("")
   const [players, setPlayers] = useState([]);
- // const [eventInfo, setEventInfo] = useState([]);
+  const [eventInfo, setEventInfo] = useState([]);
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -43,20 +43,20 @@ function App() {
   }
 
   async function onClick(event, username){
-
     
-    console.log(event + " " + username);
-    setCookie("event", event, 1);
-    setCookie("username", username, 1);
-    setEventCookie(event);
-    setUsernameCookie(username);
-    console.log(eventCookie);
-    console.log(usernameCookie);
-    console.log(`https://leaderboard.koldfusion.xyz/api/event/${event}`)
-    const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`)
-    
-    console.log(eventDetails);
+    const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.data);
+    if(eventDetails !== {}){
+      setCookie("event", event, 1);
+      setCookie("username", username, 1); 
+      setEventInfo(eventDetails);
+      setEventCookie(event);
+      setUsernameCookie(username);
+      console.log(eventDetails);     
+      window.location.href = "localhost:3000/event"
+      
+    }
   }
+    
 
   useEffect(()=>{
     setEventCookie(getCookie('event'));
@@ -88,7 +88,7 @@ function App() {
          <Home onClick={onClick} />
         </Route>
         <Route path="/event">
-          <Event players={players} />
+          <Event players={players} eventInfo={eventInfo}/>
         </Route>
         <Route path='/submit'>
           <Submit playerCount={players.length}/>
