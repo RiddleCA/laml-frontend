@@ -21,7 +21,7 @@ function App() {
   const [usernameCookie, setUsernameCookie] = useState("")
   const [players, setPlayers] = useState([]);
   const [eventInfo, setEventInfo] = useState([]);
-  const history = useHistory();
+  let history = useHistory();
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -60,7 +60,7 @@ function App() {
       console.log(playerList);
       setPlayers(playerList);   
       console.log(playerList.length);
-      history.push('/event')
+      history.push('/event');
        
     }
   }
