@@ -1,13 +1,15 @@
 import React from "react";
 import {useState} from 'react';
-//import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const Home = ({onClick}) => {
   const [event, setEvent] = useState("");
   const [username, setUsername] = useState("");
+  let history = useHistory();
 
   function onSubmit(){
     onClick(event, username);
+    history.push("/event");
   }
 
   
