@@ -60,6 +60,20 @@ function App() {
       console.log(typeof playerList);
       console.log(typeof [1,2,3])
       //window.location.href = "/event"
+      console.log(  [
+          {
+            user: "test",
+            score:6
+          },
+          {
+            user: "callum",
+            score:8
+          },
+          {
+            user: "Breana",
+            score:2
+          }
+        ]);
       
     }
   }
