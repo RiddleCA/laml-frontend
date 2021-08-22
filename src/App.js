@@ -57,23 +57,9 @@ function App() {
       const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
       console.log(playerList);
       setPlayers(playerList);   
-      console.log(typeof playerList);
-      console.log(typeof [1,2,3])
-      window.location.href = "/event"
-      console.log(  [
-          {
-            user: "test",
-            score:6
-          },
-          {
-            user: "callum",
-            score:8
-          },
-          {
-            user: "Breana",
-            score:2
-          }
-        ]);
+      console.log(playerList.length);
+      //window.location.href = "/event"
+      
       
     }
   }
