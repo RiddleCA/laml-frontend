@@ -19,7 +19,7 @@ function App() {
   const [eventCookie, setEventCookie] = useState("")
   const [usernameCookie, setUsernameCookie] = useState("")
   const [players, setPlayers] = useState([]);
-  const [eventInfo, setEventInfo] = useState([]);
+ // const [eventInfo, setEventInfo] = useState([]);
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -50,6 +50,8 @@ function App() {
     setCookie("username", username, 1);
     setEventCookie(event);
     setUsernameCookie(username);
+    console.log(eventCookie);
+    console.log(usernameCookie);
     console.log(`https://leaderboard.koldfusion.xyz/api/event/${event}`)
     const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.JSON())
     const eventData = eventDetails.JSON();
