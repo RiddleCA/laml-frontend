@@ -54,7 +54,7 @@ function App() {
       console.log(eventCookie);
       console.log(usernameCookie);
       console.log(eventDetails);  
-      const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data).then(res => res.json());
+      const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
       console.log(playerList);
       setPlayers(playerList);   
       window.location.href = "/event"
