@@ -23,22 +23,23 @@ function App() {
   
 
   useEffect(()=>{
-    setEventCookie(getCookie('event'));
-    setUsernameCookie(getCookie('username'));
-    // setPlayers([
-    //   {
-    //     user: "test",
-    //     score:6
-    //   },
-    //   {
-    //     user: "callum",
-    //     score:8
-    //   },
-    //   {
-    //     user: "Breana",
-    //     score:2
-    //   }
-    // ])
+    let ec = getCookie('event')
+    let uc = getCookie('username')
+    setEventCookie(ec);
+    setUsernameCookie(uc);
+
+    async function checkCookies(event){
+      if(event !== ""){
+        const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.data);
+        const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
+        setPlayers(playerList); 
+        setEventInfo(eventDetails);
+        window.location.href = "/event";
+
+      }
+    }
+    checkCookies(ec);
+    
   },[]);
   function getCookie(cname) {
     let name = cname + "=";
