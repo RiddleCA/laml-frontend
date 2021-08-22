@@ -54,7 +54,7 @@ function App() {
       console.log(eventCookie);
       console.log(usernameCookie);
       console.log(eventDetails);     
-      window.location.href = "localhost:3000/event"
+      window.location.href = "lookatmyleaderboard.quest/event"
       
     }
   }
