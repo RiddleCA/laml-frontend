@@ -72,8 +72,7 @@ function App() {
         setEventInfo(eventDetails);
         setEventCookie(event);
         setUsernameCookie(username);
-        console.log(eventCookie);
-        console.log(usernameCookie);
+       
         const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players/`).then(res => res.data);
         
         setPlayers(playerList);   
@@ -83,6 +82,10 @@ function App() {
   }
   async function createPlayer(event, username){
      await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/`)
+  }
+
+  async function submitScore(event, username, score){
+    await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/${score}/`)
   }
   
   players.sort((x,y) => {return y.score - x.score});
@@ -97,7 +100,7 @@ function App() {
           <Event players={players} eventInfo={eventInfo}/>
         </Route>
         <Route path='/submit'>
-          <Submit playerCount={players.length}/>
+          <Submit playerCount={players.length} submitScore={submitScore} event={eventCookie} username={usernameCookie}/>
         </Route>
       </Switch>
     </Router>
