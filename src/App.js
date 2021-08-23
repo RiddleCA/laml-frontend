@@ -101,7 +101,7 @@ function App() {
     updatePlayers();
   }
   
-  players.sort((x,y) => {return y.score - x.score});
+  players.sort((x,y) => {return y.item_count - x.item_count});
   return ( 
     <Router>
       <Nav />
