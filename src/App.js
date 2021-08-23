@@ -96,7 +96,7 @@ function App() {
   }
 
   async function submitScore(event, username, score){
-    await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/item/?amount=${score}/`)
+    await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/item/?amount=${score}`)
     updatePlayers();
   }
   
