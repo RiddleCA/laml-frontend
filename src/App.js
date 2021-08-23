@@ -100,7 +100,7 @@ function App() {
     await axios.post(`https://leaderboard.koldfusion.xyz/api/event/${event}/player/${username}/item/create/?amount=${score}`)
     updatePlayers();
   }
-  setTimeout(updatePlayers(), 10000);
+  
   players.sort((x,y) => {return y.item_count - x.item_count});
   return ( 
     <Router>
