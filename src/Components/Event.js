@@ -17,7 +17,7 @@ const Event = ({players, eventInfo}) => {
         <h2 className="text-purple-200 text-4xl">{eventInfo.title}</h2>
         <h3 className="text-purple-200">{eventInfo.description}</h3>
         <p className="text-right text-purple-200">Target {eventInfo.item_max}</p>
-        <div>
+        <div className="bg-yellow-500">
           {players.map((player) => <Player player={player}/>)}
         </div>
         
