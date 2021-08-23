@@ -70,7 +70,7 @@ function App() {
   
   async function onClick(event, username){
     if(event !== "" && username !== ""){
-      if(event.include(" ") || username.includes(" ")){
+      if(event.includes(" ") || username.includes(" ")){
         alert("Error! username or event cannot contain a space");
         return
       }
