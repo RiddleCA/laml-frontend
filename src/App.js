@@ -21,7 +21,7 @@ function App() {
   const [players, setPlayers] = useState([]);
   const [eventInfo, setEventInfo] = useState([]);
   
-
+  setInterval(updatePlayers, 10000);
   useEffect(()=>{
     let ec = getCookie('event')
     let uc = getCookie('username')
