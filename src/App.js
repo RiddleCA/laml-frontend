@@ -86,6 +86,7 @@ function App() {
         
         setPlayers(playerList);   
         createPlayer(event, username);
+        updatePlayers();
       }
     }else{
       alert("Error! event or username cannot be blank");
