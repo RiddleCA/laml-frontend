@@ -29,7 +29,8 @@ function App() {
     setUsernameCookie(uc);
 
     async function checkCookies(event){
-      if(event !== ""){
+      if(event !== "" ){
+        console.log(event);
         const eventDetails = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}`).then(res => res.data);
         const playerList = await axios.get(`https://leaderboard.koldfusion.xyz/api/event/${event}/players`).then(res => res.data);
         setPlayers(playerList); 
